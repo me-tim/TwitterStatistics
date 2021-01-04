@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Twitter Feed</title>
+    <script defer src="app.js" type="text/javascript"></script>
+    <style>
+        table {
+            border: 0
+        }
+
+        .commslog-data {
+            font-family: Consolas, Courier New, Courier, monospace;
+        }
+
+        .commslog-server {
+            background-color: red;
+            color: white
+        }
+
+        .commslog-client {
+            background-color: green;
+            color: white
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Twitter Feed</h1>
+        <p>By <a href="https://timconrad.com/cv" target="_blank">Tim Conrad</a></p>
+        <div>
+            <button id="connectButton" type="submit" class="btn btn-primary">Connect</button>
+            <button id="closeButton" class="btn btn-warning" disabled>Disconnect</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-8">
+                <div id="stateLabel" class="alert alert-info" role="alert" ">
+                    Ready to connect...
+                </div>
+                <div id="stats" class="container-fluid">
+                    <h2>Statistics</h2>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr class="d-flex">
+                                <td class="col-4">
+                                    <label>Sampled&nbsp;Tweets</label>
+                                </td>
+                                <td class="col-8">
+                                    <span id="stats-total">-</span>
+                                    <div style="padding-left: 2em;padding-top:0.5em">
+                                        <span id="stats-rate-second">-</span>
+                                        <span>/ second</span>
+                                        <br />
+
+                                        <span id="stats-rate-minute">-</span>
+                                        <span>/ minute</span>
+                                        <br />
+
+                                        <span id="stats-rate-hour">-</span>
+                                        <span>/ hour</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <td class="col-4">
+                                    <label>Last</label>
+                                </td>
+                                <td class="col-8">
+                                    <span id="stats-end">-</span>
+                                    <div style="padding-left: 2em;padding-top:0.5em">
+                                        Since <span id="stats-begin">-</span><br />
+                                        Uptime: <span id="stats-uptime">-</span>
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <td class="col-4">
+                                    <label>Emojis</label>
+                                </td>
+                                <td class="col-8">
+                                    <span id="stats-emojis">-</span>
+                                    <div style="padding-left: 2em;padding-top:0.5em" id="top-emojis">-</div>
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <td class="col-4">
+                                    <label>Hashtags</label>
+                                </td>
+                                <td class="col-8">
+                                    <span id="stats-hashtags">-</span>
+                                    <div style="padding-left:2em;padding-top:0.5em" id="top-hashtags">-</div>
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <td class="col-4">
+                                    <label>Media</label>
+                                </td>
+                                <td class="col-8">
+                                    <span id="stats-media-total">-</span>
+                                    <div style="padding-left:2em;padding-top:0.5em">
+                                        <label>Images</label> <span id="stats-media-images">-</span><br />
+                                        <label>Videos</label> <span id="stats-media-videos">-</span><br/>
+                                        <label>GIFs</label> <span id="stats-media-gifs">-</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <td class="col-4">
+                                    <label>Urls</label>
+                                </td>
+                                <td class="col-8">
+                                    <span id="stats-urls">-</span>
+                                    <div style="padding-left:2em;padding-top:0.5em" id="top-domains">-</div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+                <div class="col-sm-2">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div style="display:none">
+            <h3>Debug Log</h3>
+            <table style="width: 800px">
+                <thead>
+                    <tr>
+                        <td style="width: 100px">From</td>
+                        <td style="width: 100px">To</td>
+                        <td>Data</td>
+                    </tr>
+                </thead>
+                <tbody id="commsLog">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
